@@ -27,7 +27,6 @@ enum planck_layers {
   _BEPO,
   _LOWER,
   _RAISE,
-  _PLOVER,
   _ADJUST
 };
 
@@ -35,11 +34,9 @@ enum planck_keycodes {
   QWERTY = SAFE_RANGE,
   AZERTY,
   BEPO,
-  PLOVER,
-  BACKLIT,
-  EXT_PLV
 };
 
+#define SFTENT_KEY KC_ENT  /* https://docs.qmk.fm/#/feature_space_shift_cadet */
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
 
@@ -101,7 +98,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Lower
  * ,-----------------------------------------------------------------------------------.
- * |      |      |      |      |      |      |      |      |      |      |      |      |
+ * |      |      |      |      |      |  Prev|  Play|  Next| Mute |  Vol-| Vol+ |  PWR |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |      |      | Left | Down | Up   | Right| Enter|
  * |------+------+------+------+------+------|------+------+------+------+------+------|
@@ -111,10 +108,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = {
-  {_______, _______, _______,    _______,     _______,    _______,    _______,    _______,    _______, _______, _______, _______},
-  {_______, _______, _______,    _______,     _______,    _______,    _______,    KC_LEFT,    KC_DOWN, KC_UP,   KC_RIGHT, KC_ENT},
-  {_______, _______, LCTL(BP_W), LCTL(BP_X),  LCTL(BP_C), LCTL(BP_P), CTL_T(BP_T), LCTL(BP_Z), _______, _______, _______, _______},
-  {_______, _______, _______,    LCTL(KC_F2), _______,     _______,   KC_ENT,     KC_DEL,     _______, _______, _______, _______}
+  {_______, _______, _______,     _______,      _______,     KC_MRWD,     KC_MPLY,     KC_MFFD,     KC__MUTE, KC_VOLD, KC_VOLU,  KC_PWR},
+  {_______, _______, _______,     _______,      _______,     _______,     _______,     KC_LEFT,     KC_DOWN,  KC_UP,   KC_RIGHT, KC_ENT},
+  {_______, _______, CTL_T(BP_W), CTL_T(BP_X),  CTL_T(BP_C), CTL_T(BP_P), CTL_T(BP_T), CTL_T(BP_Z), _______,  _______, _______,  _______},
+  {_______, _______, _______,     CTL_T(KC_F2), _______,     _______,     KC_ENT,      KC_DEL,      _______,  _______, _______,  _______}
 },
 
 /* Raise
@@ -123,23 +120,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |  :   |   \  |   <  |   {  |  (   |   [  |   ]  |   )  |   }  |   >  |  /   |Enter |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |  "   |   '  |   `  |   %  |   .  |   |  |  &   |   ,  |   -  |   +  |  *   |      |
+ * |  "   |   '  |   `  |   %  |   .  |   |  |  &   |   ,  |   *  |   +  |  -   |  =   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |      |Enter | Del  |      |      |      |      |
+ * |      |      |      |      |  _   |      |Enter | Del  |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_RAISE] = {
   {BP_HASH,         BP_1,         BP_2,       BP_3,                BP_4,          BP_5,        BP_6,         BP_7,           BP_8,                 BP_9,       BP_0,        BP_EXCLAIM},
   {BP_COLON,        BP_BACKSLASH, BP_LESS,    BP_LEFT_CURLY_BRACE, BP_LEFT_PAREN, BP_LBRACKET, BP_RBRACKET,  BP_RIGHT_PAREN, BP_RIGHT_CURLY_BRACE, BP_GREATER, BP_SLASH,    KC_ENT},
-  {BP_DOUBLE_QUOTE, BP_APOS,      BP_PERCENT, BP_GRAVE,            BP_DOT,        BP_PIPE,     BP_AMPERSAND, BP_COMMA,       BP_MINUS,             BP_PLUS,    BP_ASTERISK, _______},
-  {_______,         _______,      _______,    _______,             _______,       _______,     KC_ENT,       KC_DEL,         _______,              _______,    _______,     _______}
+  {BP_DOUBLE_QUOTE, BP_APOS,      BP_PERCENT, BP_GRAVE,            BP_DOT,        BP_PIPE,     BP_AMPERSAND, BP_COMMA,       BP_ASTERISK,          BP_PLUS,    BP_MINUS, BP_EQUAL},
+  {_______,         _______,      _______,    _______,             BP_UNDERSCORE, _______,     KC_ENT,       KC_DEL,         _______,              _______,    _______,     _______}
 },
 
 /* Adjust (Lower + Raise)
  * ,-----------------------------------------------------------------------------------.
  * |      | Reset|      |      |      |      |      |      |      |      |      |  Del |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |      |      |      |Aud on|Audoff|AGnorm|AGswap|Qwerty|Azerty| Bépo |Plover|      |
+ * |      |      |      |Aud on|Audoff|AGnorm|AGswap|Qwerty|Azerty| Bépo |      |      |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |      |Voice-|Voice+|Mus on|Musoff|MIDIon|MIDIof|      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -148,7 +145,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_ADJUST] = {
   {_______, RESET,   DEBUG,    RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD, RGB_VAI, RGB_VAD, KC_DEL },
-  {_______, _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, QWERTY,  AZERTY, BEPO,  PLOVER,  _______},
+  {_______, _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, QWERTY,  AZERTY, BEPO,  _______,  _______},
   {_______, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  TERM_ON, TERM_OFF, _______, _______, _______},
   {_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______}
 }
@@ -163,8 +160,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   float tone_qwerty[][2]    = SONG(QWERTY_SOUND);
   float tone_dvorak[][2]    = SONG(DVORAK_SOUND);
   float tone_colemak[][2]   = SONG(COLEMAK_SOUND);
-  float tone_plover[][2]    = SONG(PLOVER_SOUND);
-  float tone_plover_gb[][2] = SONG(PLOVER_GOODBYE_SOUND);
   float music_scale[][2]    = SONG(MUSIC_SCALE_SOUND);
 #endif
 
@@ -199,51 +194,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           PLAY_SONG(tone_dvorak);
         #endif
         set_single_persistent_default_layer(_BEPO);
-      }
-      return false;
-      break;
-    case BACKLIT:
-      if (record->event.pressed) {
-        register_code(KC_RSFT);
-        #ifdef BACKLIGHT_ENABLE
-          backlight_step();
-        #endif
-        #ifdef KEYBOARD_planck_rev5
-          PORTE &= ~(1<<6);
-        #endif
-      } else {
-        unregister_code(KC_RSFT);
-        #ifdef KEYBOARD_planck_rev5
-          PORTE |= (1<<6);
-        #endif
-      }
-      return false;
-      break;
-    case PLOVER:
-      if (record->event.pressed) {
-        #ifdef AUDIO_ENABLE
-          stop_all_notes();
-          PLAY_SONG(plover_song);
-        #endif
-        layer_off(_RAISE);
-        layer_off(_LOWER);
-        layer_off(_ADJUST);
-        layer_on(_PLOVER);
-        if (!eeconfig_is_enabled()) {
-            eeconfig_init();
-        }
-        keymap_config.raw = eeconfig_read_keymap();
-        keymap_config.nkro = 1;
-        eeconfig_update_keymap(keymap_config.raw);
-      }
-      return false;
-      break;
-    case EXT_PLV:
-      if (record->event.pressed) {
-        #ifdef AUDIO_ENABLE
-          PLAY_SONG(plover_gb_song);
-        #endif
-        layer_off(_PLOVER);
       }
       return false;
       break;
