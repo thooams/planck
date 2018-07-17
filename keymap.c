@@ -34,6 +34,7 @@ enum planck_keycodes {
   QWERTY = SAFE_RANGE,
   AZERTY,
   BEPO,
+  DISNEY
 };
 
 #define SFTENT_KEY KC_ENT  /* https://docs.qmk.fm/#/feature_space_shift_cadet */
@@ -140,14 +141,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |      |Voice-|Voice+|Mus on|Musoff|MIDIon|MIDIof|Term n|Term f|      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |      |      |      |      |      |
+ * |      |      |      |      |      |      |      |      |chroma|Guitar|Violin|Major |
  * `-----------------------------------------------------------------------------------'
  */
 [_ADJUST] = {
   {_______, RESET,   DEBUG,    _______, _______, _______, _______, _______, _______, _______, _______, KC_DEL },
   {_______, _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, QWERTY,  AZERTY, BEPO,  _______,  _______},
   {_______, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  TERM_ON, TERM_OFF, _______, _______, _______},
-  {_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______}
+  {_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, DISNEY}
 }
 
 
@@ -159,6 +160,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   float tone_dvorak[][2]    = SONG(DVORAK_SOUND);
   float tone_colemak[][2]   = SONG(COLEMAK_SOUND);
   float music_scale[][2]    = SONG(MUSIC_SCALE_SOUND);
+  float tone_disney[][2]    = SONG(DISNEY_SONG);
 #endif
 
 uint32_t layer_state_set_user(uint32_t state) {
@@ -192,6 +194,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           PLAY_SONG(tone_dvorak);
         #endif
         set_single_persistent_default_layer(_BEPO);
+      }
+      return false;
+      break;
+    case DISNEY:
+      if (record->event.pressed) {
+        #ifdef AUDIO_ENABLE
+          PLAY_SONG(tone_disney);
+        #endif
       }
       return false;
       break;
