@@ -138,13 +138,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+-------------+------+------+------+------+------|
  * |      |      |      |Aud on|Audoff|AGnorm|AGswap|Qwerty|Azerty| Bépo |      |      |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      |Voice-|Voice+|Mus on|Musoff|MIDIon|MIDIof|      |      |      |      |      |
+ * |      |Voice-|Voice+|Mus on|Musoff|MIDIon|MIDIof|Term n|Term f|      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |      |      |      |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_ADJUST] = {
-  {_______, RESET,   DEBUG,    RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD, RGB_VAI, RGB_VAD, KC_DEL },
+  {_______, RESET,   DEBUG,    _______, _______, _______, _______, _______, _______, _______, _______, KC_DEL },
   {_______, _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, QWERTY,  AZERTY, BEPO,  _______,  _______},
   {_______, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  TERM_ON, TERM_OFF, _______, _______, _______},
   {_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______}
@@ -154,8 +154,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 #ifdef AUDIO_ENABLE
-  float plover_song[][2]    = SONG(PLOVER_SOUND);
-  float plover_gb_song[][2] = SONG(PLOVER_GOODBYE_SOUND);
   float tone_startup[][2]   = SONG(STARTUP_SOUND);
   float tone_qwerty[][2]    = SONG(QWERTY_SOUND);
   float tone_dvorak[][2]    = SONG(DVORAK_SOUND);
