@@ -99,7 +99,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Lower
  * ,-----------------------------------------------------------------------------------.
- * |      |      |      |      |      |  Prev|  Play|  Next| Mute |  Vol-| Vol+ |  PWR |
+ * |      |      |      |      |      |  Prev|  Play|  Next| Mute |  Vol-| Vol+ |  Back|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |      |      | Left | Down | Up   | Right| Enter|
  * |------+------+------+------+------+------|------+------+------+------+------+------|
@@ -109,7 +109,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = {
-  {_______, _______, _______,     _______,      _______,     KC_MRWD,     KC_MPLY,     KC_MFFD,     KC__MUTE, KC_VOLD, KC_VOLU,  KC_PWR},
+  {_______, _______, _______,     _______,      _______,     KC_MRWD,     KC_MPLY,     KC_MFFD,     KC__MUTE, KC_VOLD, KC_VOLU,  KC_BSPC},
   {_______, _______, _______,     _______,      _______,     _______,     _______,     KC_LEFT,     KC_DOWN,  KC_UP,   KC_RIGHT, KC_ENT},
   {_______, _______, CTL_T(BP_W), CTL_T(BP_X),  CTL_T(BP_C), CTL_T(BP_P), CTL_T(BP_T), CTL_T(BP_Z), _______,  _______, _______,  _______},
   {_______, _______, _______,     CTL_T(KC_F2), _______,     _______,     KC_ENT,      KC_DEL,      _______,  _______, _______,  _______}
@@ -117,20 +117,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Raise
  * ,-----------------------------------------------------------------------------------.
- * |  #   |  1   |   2  |   3  |  4   |   5  |   6  |   7  |  8   |   9  |  0   |  !   |
+ * |  #   |  1   |   2  |   3  |  4   |   5  |   6  |   7  |  8   |   9  |  0   |  Back|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |  |   |   \  |   <  |   {  |  (   |   [  |   ]  |   )  |   }  |   >  |  /   |Enter |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      |   '  |   `  |   %  |   .  |   :  |  &   |   ,  |   *  |   +  |  -   |  =   |
+ * |      |   '  |   `  |   %  |   :  |   .  |  &   |   ,  |   *  |   +  |  -   |  =   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |  €   |  @   |  _   |      |Enter | Del  |      |      |      |      |
+ * |      |      |  €   |  @   |  _   |   !  |Enter | Del  |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_RAISE] = {
-  {BP_HASH, BP_1,            BP_2,       BP_3,                BP_4,          BP_5,        BP_6,         BP_7,           BP_8,                 BP_9,       BP_0,        BP_EXCLAIM},
-  {BP_PIPE, BP_BACKSLASH,    BP_LESS,    BP_LEFT_CURLY_BRACE, BP_LEFT_PAREN, BP_LBRACKET, BP_RBRACKET,  BP_RIGHT_PAREN, BP_RIGHT_CURLY_BRACE, BP_GREATER, BP_SLASH,    KC_ENT},
-  {_______, BP_APOS,         BP_PERCENT, BP_GRAVE,            BP_DOT,        BP_COLON,    BP_AMPERSAND, BP_COMMA,       BP_ASTERISK,          BP_PLUS,    BP_MINUS, BP_EQUAL},
-  {_______, BP_DOUBLE_QUOTE, BP_EURO,    BP_AT,               BP_UNDERSCORE, _______,     KC_ENT,       KC_DEL,         _______,              _______,    _______,     _______}
+  {BP_HASH, BP_1,            BP_2,       BP_3,                BP_4,          BP_5,        BP_6,         BP_7,           BP_8,                 BP_9,       BP_0,     KC_BSPC},
+  {BP_PIPE, BP_BACKSLASH,    BP_LESS,    BP_LEFT_CURLY_BRACE, BP_LEFT_PAREN, BP_LBRACKET, BP_RBRACKET,  BP_RIGHT_PAREN, BP_RIGHT_CURLY_BRACE, BP_GREATER, BP_SLASH, KC_ENT},
+  {_______, BP_APOS,         BP_PERCENT, BP_GRAVE,            BP_COLON,      BP_DOT,      BP_AMPERSAND, BP_COMMA,       BP_ASTERISK,          BP_PLUS,    BP_MINUS, BP_EQUAL},
+  {_______, BP_DOUBLE_QUOTE, BP_EURO,    BP_AT,               BP_UNDERSCORE, BP_EXCLAIM,  KC_ENT,       KC_DEL,         _______,              _______,    _______,  _______}
 },
 
 /* Adjust (Lower + Raise)
