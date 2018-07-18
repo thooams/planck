@@ -94,14 +94,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   {KC_ESC,  BP_B,       BP_E_ACUTE, BP_P,    BP_O,    BP_E_GRAVE, BP_DEAD_CIRCUMFLEX, BP_V,    BP_D,    BP_L,    BP_J,  BP_W},
   {KC_LSFT, BP_A,       BP_U,       BP_I,    BP_E,    BP_COMMA,   BP_C,               BP_T,    BP_S,    BP_R,    BP_N,  BP_M},
   {RAISE,   BP_A_GRAVE, BP_Y,       BP_X,    BP_DOT,  BP_K,       BP_APOS,            BP_Q,    BP_G,    BP_H,    BP_F,  BP_Z},
-  {LOWER,   KC_LCTL,    KC_LALT,    KC_LGUI, KC_SPC , KC_TAB,      KC_ENT,             KC_BSPC, KC_LEFT, KC_DOWN, KC_UP, KC_RGHT}
+  {LOWER,   KC_LCTL,    KC_LALT,    KC_LGUI, KC_SPC , KC_TAB,      KC_BSPC,           KC_ENT, KC_LEFT, KC_DOWN, KC_UP, KC_RGHT}
 },
 
 /* Lower
  * ,-----------------------------------------------------------------------------------.
  * |      |      |      |      |      |  Prev|  Play|  Next| Mute |  Vol-| Vol+ |  Back|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |      |      | Left | Down | Up   | Right| Enter|
+ * |      |      |      |      |      |      |  ç   | Left | Down | Up   | Right| Enter|
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |      |      |c. tab|  cut | copy | paste|n. tab| Undo |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -109,10 +109,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = {
-  {_______, _______, _______,     _______,      _______,     KC_MRWD,     KC_MPLY,     KC_MFFD,     KC__MUTE, KC_VOLD, KC_VOLU,  KC_BSPC},
-  {_______, _______, _______,     _______,      _______,     _______,     _______,     KC_LEFT,     KC_DOWN,  KC_UP,   KC_RIGHT, KC_ENT},
-  {_______, _______, CTL_T(BP_W), CTL_T(BP_X),  CTL_T(BP_C), CTL_T(BP_P), CTL_T(BP_T), CTL_T(BP_Z), _______,  _______, _______,  _______},
-  {_______, _______, _______,     CTL_T(KC_F2), _______,     _______,     KC_ENT,      KC_DEL,      _______,  _______, _______,  _______}
+  {_______, _______, _______,     _______,      _______,     KC_MPRV,     KC_MPLY,      KC_MNXT,     KC__MUTE, KC_VOLD, KC_VOLU,  KC_BSPC},
+  {_______, _______, _______,     _______,      _______,     _______,     BP_C_CEDILLA, KC_LEFT,     KC_DOWN,  KC_UP,   KC_RIGHT, KC_ENT},
+  {_______, _______, CTL_T(BP_W), CTL_T(BP_X),  CTL_T(BP_C), CTL_T(BP_P), CTL_T(BP_T),  CTL_T(BP_Z), _______,  _______, _______,  _______},
+  {_______, _______, _______,     CTL_T(KC_F2), _______,     _______,     KC_BSPC,      KC_ENT,      _______,  _______, _______,  _______}
 },
 
 /* Raise
@@ -130,24 +130,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   {BP_HASH, BP_1,            BP_2,       BP_3,                BP_4,          BP_5,        BP_6,         BP_7,           BP_8,                 BP_9,       BP_0,     KC_BSPC},
   {BP_PIPE, BP_BACKSLASH,    BP_LESS,    BP_LEFT_CURLY_BRACE, BP_LEFT_PAREN, BP_LBRACKET, BP_RBRACKET,  BP_RIGHT_PAREN, BP_RIGHT_CURLY_BRACE, BP_GREATER, BP_SLASH, KC_ENT},
   {_______, BP_APOS,         BP_PERCENT, BP_GRAVE,            BP_COLON,      BP_DOT,      BP_AMPERSAND, BP_COMMA,       BP_ASTERISK,          BP_PLUS,    BP_MINUS, BP_EQUAL},
-  {_______, BP_DOUBLE_QUOTE, BP_EURO,    BP_AT,               BP_UNDERSCORE, BP_EXCLAIM,  KC_ENT,       KC_DEL,         _______,              _______,    _______,  _______}
+  {_______, BP_DOUBLE_QUOTE, BP_EURO,    BP_AT,               BP_UNDERSCORE, BP_EXCLAIM,  KC_BSPC,      KC_ENT,         _______,              _______,    _______,  _______}
 },
 
 /* Adjust (Lower + Raise)
  * ,-----------------------------------------------------------------------------------.
  * |      | Reset|      |      |      |      |      |      |      |      |      |  Del |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |      |      |      |Aud on|Audoff|AGnorm|AGswap|Qwerty|Azerty| Bépo |      |      |
+ * |      |      |      |Aud on|Audoff|      |      |Qwerty|Azerty| Bépo |      |      |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      |Voice-|Voice+|Mus on|Musoff|MIDIon|MIDIof|Term n|Term f|      |      |      |
+ * |      |      |      |Mus on|Musoff|      |      |Term n|Term f|      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |             |      |chroma|Guitar|Violin|Major |
  * `-----------------------------------------------------------------------------------'
  */
 [_ADJUST] = {
   {_______, RESET,   DEBUG,    _______, _______, _______, _______, _______, _______, _______, _______, KC_DEL },
-  {_______, _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, QWERTY,  AZERTY, BEPO,  _______,  _______},
-  {_______, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  TERM_ON, TERM_OFF, _______, _______, _______},
+  {_______, _______, MU_MOD,  AU_ON,   AU_OFF,  _______, _______, QWERTY,  AZERTY, BEPO,  _______,  _______},
+  {_______, _______,  _______,  MU_ON,   _______,  _______,   _______,  TERM_ON, TERM_OFF, _______, _______, _______},
   {_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, DISNEY}
 }
 
