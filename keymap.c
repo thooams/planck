@@ -85,9 +85,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+-------------+------+------+------+------+------|
  * | Tab  |   A  |   U  |   I  |   E  |   ,  |   C  |   T  |   S  |   R  |   N  |  M   |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * | Shift|   À  |   Y  |   X  |   .  |   K  |   '  |   Q  |   G  |   H  |   F  |  Z   |
+ * | Raise|   À  |   Y  |   X  |   .  |   K  |   '  |   Q  |   G  |   H  |   F  |  Z   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Raise|Ctrl  | Alt  | GUI  | Space|Lower | Back |Enter | Left | Down |  Up  |Right |
+ * | Raise|Ctrl  | Alt  | GUI  | Space|      | Back |Enter | Left | Down |  Up  |Right |
  * `-----------------------------------------------------------------------------------'
  */
 [_BEPO] = {
@@ -121,7 +121,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |  |   |   \  |   <  |   {  |  (   |   [  |   ]  |   )  |   }  |   >  |  /   |Enter |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      |   '  |   `  |   %  |   :  |   .  |  &   |   ,  |   *  |   +  |  -   |  =   |
+ * |      |   '  |   `  |   %  |   :  |   .  |  &   |   =  |   *  |   +  |  -   |  ç   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |  €   |  @   |  _   |      |Del   | Enter|      |      |      |      |
  * `-----------------------------------------------------------------------------------'
@@ -129,8 +129,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_RAISE] = {
   {BP_HASH, BP_1,            BP_2,       BP_3,                BP_4,          BP_5,        BP_6,         BP_7,           BP_8,                 BP_9,       BP_0,     KC_BSPC},
   {BP_PIPE, BP_BACKSLASH,    BP_LESS,    BP_LEFT_CURLY_BRACE, BP_LEFT_PAREN, BP_LBRACKET, BP_RBRACKET,  BP_RIGHT_PAREN, BP_RIGHT_CURLY_BRACE, BP_GREATER, BP_SLASH, KC_ENT},
-  {_______, BP_APOS,         BP_PERCENT, BP_GRAVE,            BP_COLON,      BP_DOT,      BP_AMPERSAND, BP_COMMA,       BP_ASTERISK,          BP_PLUS,    BP_MINUS, BP_EQUAL},
-  {_______, BP_DOUBLE_QUOTE, BP_EURO,    BP_AT,               BP_UNDERSCORE, _______,     KC_DEL,      KC_ENT,         _______,              _______,    _______,  _______}
+  {_______, BP_APOS,         BP_PERCENT, BP_GRAVE,            BP_COLON,      BP_DOT,      BP_AMPERSAND, BP_EQUAL,       BP_ASTERISK,          BP_PLUS,    BP_MINUS, BP_C_CEDILLA},
+  {_______, BP_DOUBLE_QUOTE, BP_EURO,    BP_AT,               BP_UNDERSCORE, _______,     KC_DEL,       KC_ENT,         _______,              _______,    _______,  _______}
 },
 
 /* Adjust (Lower + Raise)
